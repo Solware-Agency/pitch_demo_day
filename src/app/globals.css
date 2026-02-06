@@ -1,0 +1,354 @@
+/* Carga Tailwind v4 y tu config (si la usas) */
+@config "../../tailwind.config.ts";
+@import "tailwindcss";
+
+/* 
+  THEME: declaramos los tokens como exige Tailwind v4.
+  - Mantenemos tus nombres (background, foreground, etc.) en DOS sabores:
+    1) Variables "legacy" (solo números HSL) para compatibilidad con estilos antiguos.
+    2) Variables oficiales v4 con el prefijo --color- que generan utilidades como bg-background.
+*/
+@theme {
+  /* === Legacy tokens (compatibilidad v3) === */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+
+  /* Charts opcionales que tenías */
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+
+  /* === Theme tokens v4 (generan utilidades) === */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  /* Tipografías / radius opcionales (ajusta a tu gusto) */
+  --radius: 0.5rem;
+}
+
+/* Activa "dark" por clase .dark en v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Overrides para modo oscuro (clase .dark en <html> o <body>) */
+@layer theme {
+  :root, :host {
+    @variant dark {
+      --background: 0 0% 3.9%;
+      --foreground: 0 0% 98%;
+      --card: 0 0% 3.9%;
+      --card-foreground: 0 0% 98%;
+      --popover: 0 0% 3.9%;
+      --popover-foreground: 0 0% 98%;
+      --primary: 0 0% 98%;
+      --primary-foreground: 0 0% 9%;
+      --secondary: 0 0% 14.9%;
+      --secondary-foreground: 0 0% 98%;
+      --muted: 0 0% 14.9%;
+      --muted-foreground: 0 0% 63.9%;
+      --accent: 0 0% 14.9%;
+      --accent-foreground: 0 0% 98%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 0 0% 14.9%;
+      --input: 0 0% 14.9%;
+      --ring: 0 0% 83.1%;
+
+      --chart-1: 220 70% 50%;
+      --chart-2: 160 60% 45%;
+      --chart-3: 30 80% 55%;
+      --chart-4: 280 65% 60%;
+      --chart-5: 340 75% 55%;
+
+      /* Re-deriva tokens v4 desde legacy para el modo oscuro */
+      --color-background: hsl(var(--background));
+      --color-foreground: hsl(var(--foreground));
+      --color-card: hsl(var(--card));
+      --color-card-foreground: hsl(var(--card-foreground));
+      --color-popover: hsl(var(--popover));
+      --color-popover-foreground: hsl(var(--popover-foreground));
+      --color-primary: hsl(var(--primary));
+      --color-primary-foreground: hsl(var(--primary-foreground));
+      --color-secondary: hsl(var(--secondary));
+      --color-secondary-foreground: hsl(var(--secondary-foreground));
+      --color-muted: hsl(var(--muted));
+      --color-muted-foreground: hsl(var(--muted-foreground));
+      --color-accent: hsl(var(--accent));
+      --color-accent-foreground: hsl(var(--accent-foreground));
+      --color-destructive: hsl(var(--destructive));
+      --color-destructive-foreground: hsl(var(--destructive-foreground));
+      --color-border: hsl(var(--border));
+      --color-input: hsl(var(--input));
+      --color-ring: hsl(var(--ring));
+
+      --color-chart-1: hsl(var(--chart-1));
+      --color-chart-2: hsl(var(--chart-2));
+      --color-chart-3: hsl(var(--chart-3));
+      --color-chart-4: hsl(var(--chart-4));
+      --color-chart-5: hsl(var(--chart-5));
+    }
+  }
+}
+
+/* Base globals “a lo shadcn”, compatibles con v4 */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, :host {
+    color-scheme: light;
+  }
+  :where(.dark) {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden; /* Prevenir scroll horizontal durante transiciones */
+    overflow-y: auto; /* Permitir scroll vertical en móviles */
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height para móviles */
+  }
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+/* Componentes: añade lo tuyo aquí si usas @apply personalizados */
+@layer components {
+  /* ejemplo: tarjetas */
+  .card {
+    @apply bg-card text-card-foreground rounded-xl border;
+  }
+}
+
+/* Utilities personalizadas que ya tenías / quieras mantener */
+@layer utilities {
+  .container-2xl {
+    @apply max-w-screen-2xl mx-auto px-4;
+  }
+  .focus-ring {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+
+@layer utilities {
+
+  /* Animaciones de partículas */
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+
+    25% {
+      opacity: 0.5;
+    }
+
+    50% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.8;
+    }
+
+    75% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-float {
+    animation: float linear infinite;
+  }
+
+  /* Newton's Pendulum Animation */
+  @keyframes pendulum1 {
+    0% {
+      transform: translateY(0px);
+    }
+
+    16.6% {
+      transform: translateY(80px);
+    }
+
+    33.3% {
+      transform: translateY(80px);
+    }
+
+    50% {
+      transform: translateY(0px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes pendulum2 {
+    0% {
+      transform: translateY(0px);
+    }
+
+    16.6% {
+      transform: translateY(0px);
+    }
+
+    33.3% {
+      transform: translateY(80px);
+    }
+
+    50% {
+      transform: translateY(80px);
+    }
+
+    66.6% {
+      transform: translateY(0px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes pendulum3 {
+    0% {
+      transform: translateY(0px);
+    }
+
+    33.3% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(0px);
+    }
+
+    66.6% {
+      transform: translateY(80px);
+    }
+
+    83.3% {
+      transform: translateY(80px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .pendulum-1 {
+    animation: pendulum1 6s ease-in-out infinite;
+  }
+
+  .pendulum-2 {
+    animation: pendulum2 6s ease-in-out infinite;
+  }
+
+  .pendulum-3 {
+    animation: pendulum3 6s ease-in-out infinite;
+  }
+
+  /* Optimizaciones para transiciones de slides */
+  .slide-transition-container {
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Force hardware acceleration */
+    backface-visibility: hidden;
+    perspective: 1000px;
+    overflow: visible; /* Permitir que el contenido fluya naturalmente */
+  }
+
+  .slide-transition-content {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Clases para diferentes tipos de transición */
+  .transition-slide-horizontal {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-slide-vertical {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-fade-scale {
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Optimización de rendimiento para animaciones */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+
+  /* Prevenir parpadeos durante las transiciones */
+  .no-flash {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Estilos específicos para móviles - scroll unificado */
+  @media (max-width: 768px) {
+    html, body {
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    }
+    
+    .slide-transition-container {
+      overflow: visible !important;
+      position: relative !important;
+    }
+    
+    .slide-transition-content {
+      overflow: visible !important;
+    }
+  }
+}
