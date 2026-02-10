@@ -1,7 +1,7 @@
 'use client'
 
 import type { MotionValue } from 'framer-motion'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { SiWhatsapp, SiGmail, SiAdobeacrobatreader } from 'react-icons/si'
 import { BsFileEarmarkText } from 'react-icons/bs'
@@ -35,7 +35,7 @@ function OrbitingIcon({
 }: {
 	orbitAngle: MotionValue<number>
 	index: number
-	Icon: (props: { className?: string }) => JSX.Element
+	Icon: (props: { className?: string }) => React.ReactElement
 }) {
 	const radius = ORBIT_RADIUS_MIN + (ORBIT_RADIUS_MAX - ORBIT_RADIUS_MIN) * (index / (ICONS.length - 1)) + (RADIUS_OFFSETS[index] ?? 0)
 	const baseAngleDeg = index * 60
@@ -113,7 +113,7 @@ export function Hook() {
 						style={{ rotate: orbitAngle }}
 					>
 					{ICONS.map(({ Icon }, i) => (
-						<OrbitingIcon key={i} orbitAngle={orbitAngle} index={i} Icon={Icon as (props: { className?: string }) => JSX.Element} />
+						<OrbitingIcon key={i} orbitAngle={orbitAngle} index={i} Icon={Icon as (props: { className?: string }) => React.ReactElement} />
 					))}
 					</motion.div>
 				</div>
