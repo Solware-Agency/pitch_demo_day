@@ -7,128 +7,22 @@ import { useSlideAnimations } from '@src/hooks/useSlideAnimations'
 import { useMobileScroll } from '@src/hooks/useMobileScroll'
 import {
 	Portada,
-	// Resumen,
-	// Problema,
-	Dolencia1,
-	Dolencia2,
-	Actividades1,
-	VideoPanel,
-	Evolucion1,
-	Evolucion2,
-	Evolucion3,
-	// ResumenProblema,
-	// Solucion,
-	// Mercado,
-	// Negocio,
-	// Traccion,
-	// Roadmap,
-	// Riesgos,
-	// Equipo,
-	CTA,
+	Hook,
+	Problema,
+	Reveal,
+	Evidencia,
+	Demo,
+	Cierre,
 } from '@src/slides/index'
 
 const slides = [
-	// Slide 1: Portada
-	{
-		id: 'portada',
-		component: Portada,
-	},
-
-	// Slide 2: Dolencia 1
-	{
-		id: 'dolencia1',
-		component: Dolencia1,
-	},
-
-	// Slide 3: Dolencia 2
-	{
-		id: 'dolencia2',
-		component: Dolencia2,
-	},
-
-	// Slide 4: Actividades 1
-	{
-		id: 'actividades1',
-		component: Actividades1,
-	},
-
-	// Slide 5: Actividades 2
-	{
-		id: 'videopanel',
-		component: VideoPanel,
-	},
-
-	// Slide 9: Evolucion 1
-	{
-		id: 'evolucion1',
-		component: Evolucion1,
-	},
-
-	// Slide 10: Evolucion 2
-	{
-		id: 'evolucion2',
-		component: Evolucion2,
-	},
-
-	// Slide 11: Evolucion 3
-	{
-		id: 'evolucion3',
-		component: Evolucion3,
-	},
-
-	// // Slide 2: Resumen Ejecutivo
-	// {
-	// 	id: 'resumen',
-	// 	component: ResumenProblema,
-	// },
-
-	// // Slide 4: Solución
-	// {
-	// 	id: 'solucion',
-	// 	component: Solucion,
-	// },
-
-	// // Slide 6: Mercado
-	// {
-	// 	id: 'mercado',
-	// 	component: Mercado,
-	// },
-
-	// // Slide 8: Negocio
-	// {
-	// 	id: 'negocio',
-	// 	component: Negocio,
-	// },
-
-	// // Slide 9: Tracción
-	// {
-	// 	id: 'traccion',
-	// 	component: Traccion,
-	// },
-
-	// // Slide 10: Roadmap
-	// {
-	// 	id: 'roadmap',
-	// 	component: Roadmap,
-	// },
-
-	// // Slide 11: Riesgos
-	// {
-	// 	id: 'riesgos',
-	// 	component: Riesgos,
-	// },
-
-	// // Slide 12: Equipo
-	// {
-	// 	id: 'equipo',
-	// 	component: Equipo,
-	// },
-
-	// Slide 13: CTA
-	{
-		id: 'cta',
-		component: CTA,
-	},
+	{ id: 'portada', component: Portada },
+	{ id: 'hook', component: Hook },
+	{ id: 'problema', component: Problema },
+	{ id: 'reveal', component: Reveal },
+	{ id: 'evidencia', component: Evidencia },
+	{ id: 'demo', component: Demo },
+	{ id: 'cierre', component: Cierre },
 ]
 
 export default function SlidesPage() {
@@ -143,12 +37,10 @@ export default function SlidesPage() {
 	const totalSlides = slides.length
 	const { getTransitionDirection } = useSlideAnimations()
 
-	// Configurar scroll para móviles
 	useMobileScroll()
 
 	const cambiarSlide = (nuevoSlide: number) => {
 		if (nuevoSlide >= 0 && nuevoSlide < totalSlides) {
-			// Actualizar slide inmediatamente para transición fluida
 			previousSlideRef.current = slideActual
 			setSlideActual(nuevoSlide)
 		}
@@ -158,9 +50,7 @@ export default function SlidesPage() {
 		setMostrarInteractividad(!mostrarInteractividad)
 	}
 
-	// Manejar click en la slide para navegar
 	const handleSlideClick = (e: React.MouseEvent) => {
-		// Solo navegar si no se está haciendo click en un botón o elemento interactivo
 		const target = e.target as HTMLElement
 		if (target.closest('button') || target.closest('a') || target.closest('[role="button"]')) {
 			return
@@ -170,22 +60,13 @@ export default function SlidesPage() {
 		const clickX = e.clientX - rect.left
 		const slideWidth = rect.width
 
-		// Dividir la slide en tres partes: izquierda (anterior), centro (no hacer nada), derecha (siguiente)
 		if (clickX < slideWidth / 3) {
-			// Click en el tercio izquierdo - slide anterior
-			if (slideActual > 0) {
-				cambiarSlide(slideActual - 1)
-			}
+			if (slideActual > 0) cambiarSlide(slideActual - 1)
 		} else if (clickX > (slideWidth * 2) / 3) {
-			// Click en el tercio derecho - slide siguiente
-			if (slideActual < totalSlides - 1) {
-				cambiarSlide(slideActual + 1)
-			}
+			if (slideActual < totalSlides - 1) cambiarSlide(slideActual + 1)
 		}
-		// Click en el tercio central - no hacer nada
 	}
 
-	// Manejar eventos de touch para swipe
 	const handleTouchStart = (e: React.TouchEvent) => {
 		touchStartX.current = e.targetTouches[0].clientX
 		touchStartY.current = e.targetTouches[0].clientY
@@ -201,23 +82,12 @@ export default function SlidesPage() {
 		const deltaX = touchEndX.current - touchStartX.current
 		const deltaY = touchEndY.current - touchStartY.current
 
-		// Verificar que sea un swipe horizontal (no vertical)
 		if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
-			if (deltaX > 0) {
-				// Swipe hacia la derecha - slide anterior
-				if (slideActual > 0) {
-					cambiarSlide(slideActual - 1)
-				}
-			} else {
-				// Swipe hacia la izquierda - slide siguiente
-				if (slideActual < totalSlides - 1) {
-					cambiarSlide(slideActual + 1)
-				}
-			}
+			if (deltaX > 0 && slideActual > 0) cambiarSlide(slideActual - 1)
+			else if (deltaX < 0 && slideActual < totalSlides - 1) cambiarSlide(slideActual + 1)
 		}
 	}
 
-	// Obtener la dirección de la transición
 	const direction = getTransitionDirection(previousSlideRef.current, slideActual)
 
 	return (
@@ -231,7 +101,7 @@ export default function SlidesPage() {
 			/>
 
 			<div
-				className="w-full relative cursor-pointer"
+				className="w-full h-dvh min-h-dvh relative cursor-pointer"
 				onClick={handleSlideClick}
 				onTouchStart={handleTouchStart}
 				onTouchEnd={handleTouchEnd}

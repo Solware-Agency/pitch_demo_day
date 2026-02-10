@@ -172,51 +172,44 @@ export function VerticalSlideTransition({ children, slideIndex, direction, class
 	)
 }
 
-// Componente con efecto de fade puro (sin espacios en blanco)
+// Componente con efecto de fade puro (sin saltos al cambiar de slide)
 export function FadeTransition({ children, slideIndex, direction, className }: SlideTransitionProps) {
 	const fadeVariants = {
 		enter: {
 			opacity: 0,
-			scale: 0.99, // Reducido para evitar overflow
 		},
 		center: {
 			opacity: 1,
-			scale: 1,
 		},
 		exit: {
 			opacity: 0,
-			scale: 1.01, // Reducido para evitar overflow
 		},
 	}
 
 	const fadeTransition = {
 		opacity: {
-			duration: 0.3,
-			ease: [0.4, 0, 0.2, 1] as const,
-		},
-		scale: {
-			duration: 0.3,
+			duration: 0.5,
 			ease: [0.4, 0, 0.2, 1] as const,
 		},
 	}
 
 	return (
-		<AnimatePresence mode="popLayout" custom={direction}>
-			<motion.div
-				key={slideIndex}
-				custom={direction}
-				variants={fadeVariants}
-				initial="enter"
-				animate="center"
-				exit="exit"
-				transition={fadeTransition}
-				className={`relative slide-transition-container gpu-accelerated no-flash ${className || ''}`}
-				style={{
-					willChange: 'transform, opacity',
-				}}
-			>
-				<div className="slide-transition-content w-full">{children}</div>
-			</motion.div>
-		</AnimatePresence>
+		<div className={`absolute inset-0 w-full h-full ${className || ''}`}>
+			<AnimatePresence initial={false} custom={direction}>
+				<motion.div
+					key={slideIndex}
+					custom={direction}
+					variants={fadeVariants}
+					initial="enter"
+					animate="center"
+					exit="exit"
+					transition={fadeTransition}
+					className="absolute inset-0 w-full h-full slide-transition-container"
+					style={{ willChange: 'opacity' }}
+				>
+					<div className="slide-transition-content w-full h-full overflow-y-auto">{children}</div>
+				</motion.div>
+			</AnimatePresence>
+		</div>
 	)
 }
