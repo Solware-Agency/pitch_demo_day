@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { slideBg } from '@src/lib/slideTheme'
 
 const DEMO_VIDEO_URL =
-	'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos/DemoSolHub.mp4'
+	'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos/SolHoub/SOLHUB.Feb2026.mp4'
 
 export function Demo() {
 	return (
@@ -26,7 +26,6 @@ export function Demo() {
 						preload="auto"
 						autoPlay
 						muted
-						loop
 						style={{ minHeight: '240px' }}
 					>
 						Tu navegador no soporta la reproducción de video.

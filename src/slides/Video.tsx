@@ -66,12 +66,11 @@ export function VideoPanel() {
 					<video
 						ref={videoRef}
 						className="w-full h-auto rounded-lg shadow-2xl border-2 border-white/20"
-						loop
 						muted
 						playsInline
 						preload="metadata"
 					>
-						<source src="/video.mp4" type="video/mp4" />
+						<source src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos/SolHoub/SOLHUB.Feb2026.mp4" type="video/mp4" />
 						Tu navegador no soporta el elemento de video.
 					</video>
 
