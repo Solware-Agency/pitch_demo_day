@@ -8,6 +8,8 @@ import { pitchCopy } from '@src/lib/pitchCopy'
 import { slideBg } from '@src/lib/slideTheme'
 
 const REVEAL_ICONS = [GitMerge, Activity, Puzzle] as const
+const CARD_STAGGER = 0.5
+const CARD_DELAY_FIRST = 0.6
 
 const LOGO_SOLHUB_SIN_ESLOGAN =
 	'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Logos/SolHub/SolHub_ORIG%20-%20SIN%20ESLOGAN.svg'
@@ -17,21 +19,17 @@ export function Reveal() {
 		<div className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}>
 			<FloatingLinesBackground />
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
-			{/* CONTROL: SolHub — mismo tamaño, centrados */}
+			{/* Solo logo SolHub */}
 			<motion.div
-				className="flex flex-row items-center justify-center gap-3 sm:gap-4 z-10 text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+				className="flex items-center justify-center z-10"
 				initial={{ opacity: 0, y: 10 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.5, delay: 0.2 }}
 			>
-				<h1 className="text-white font-black tracking-tight">
-					CONTROL:
-				</h1>
 				<img
 					src={LOGO_SOLHUB_SIN_ESLOGAN}
 					alt="SolHub"
-					className="w-auto object-contain self-center"
-					style={{ height: '1.45em', verticalAlign: 'middle' }}
+					className="w-auto object-contain h-14 sm:h-16 md:h-20 lg:h-24"
 				/>
 			</motion.div>
 
@@ -46,13 +44,8 @@ export function Reveal() {
 				<EyeTrackingComponent className="w-full h-full" />
 			</motion.div>
 
-			{/* 3 pilares — iconos grandes + frase corta, layout Shark Tank */}
-			<motion.div
-				className="mt-10 sm:mt-14 max-w-4xl mx-auto z-10 w-full px-2"
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 0.35, delay: 0.5 }}
-			>
+			{/* 3 cards — entran una por una, con bullets debajo (max 3 por card) */}
+			<div className="mt-10 sm:mt-14 max-w-4xl mx-auto z-10 w-full px-2">
 				<ul
 					className="flex flex-col sm:flex-row gap-6 sm:gap-8 justify-center items-stretch"
 					role="list"
@@ -63,16 +56,16 @@ export function Reveal() {
 							<motion.li
 								key={i}
 								className="flex flex-col items-center text-center rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-6 sm:px-8 sm:py-8 flex-1 min-w-0 shadow-xl"
-								initial={{ opacity: 0, scale: 0.5, y: 24 }}
+								initial={{ opacity: 0, scale: 0.6, y: 20 }}
 								animate={{ opacity: 1, scale: 1, y: 0 }}
 								transition={{
 									type: 'spring',
-									stiffness: 320,
+									stiffness: 280,
 									damping: 22,
-									delay: 0.75 + i * 0.15,
+									delay: CARD_DELAY_FIRST + i * CARD_STAGGER,
 								}}
 							>
-								<motion.span
+								<span
 									className="flex shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl bg-indigo-500/30 border border-indigo-400/40 flex items-center justify-center text-indigo-200 mb-4"
 									style={{
 										boxShadow: '0 0 28px rgba(99, 102, 241, 0.35), inset 0 1px 0 rgba(255,255,255,0.1)',
@@ -84,7 +77,7 @@ export function Reveal() {
 											strokeWidth={2}
 										/>
 									)}
-								</motion.span>
+								</span>
 								<span className="text-white font-bold text-lg sm:text-xl md:text-2xl leading-tight">
 									{phrase}
 								</span>
@@ -92,7 +85,7 @@ export function Reveal() {
 						)
 					})}
 				</ul>
-			</motion.div>
+			</div>
 		</div>
 	)
 }

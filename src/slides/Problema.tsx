@@ -1,31 +1,22 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion, animate } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { SearchX, BarChart3, Compass } from 'lucide-react'
 import { FloatingLinesBackground } from '@src/components/FloatingLines'
+import { SlidingNumber } from '@src/components/ui/sliding-number'
 import { pitchCopy } from '@src/lib/pitchCopy'
 import { slideBg } from '@src/lib/slideTheme'
 
 const PROBLEMA_ICONS = [SearchX, BarChart3, Compass] as const
 const COUNT_TARGET = 1700
 const COUNT_DURATION = 1.8
-const COUNT_DELAY = 1.1
+// Cards entran una por una; el número empieza después
+const CARD_STAGGER = 0.55
+const CARD_DELAY_FIRST = 0.6
+const NUMBER_BLOCK_DELAY = CARD_DELAY_FIRST + 3 * CARD_STAGGER // después de las 3 cards
 
 export function Problema() {
 	const short = pitchCopy.problema.short ?? pitchCopy.problema.phrases
-	const [countDisplay, setCountDisplay] = useState('+0')
-
-	useEffect(() => {
-		const controls = animate(0, COUNT_TARGET, {
-			duration: COUNT_DURATION,
-			delay: COUNT_DELAY,
-			ease: 'easeOut',
-			onUpdate: (v) =>
-				setCountDisplay(`+${Math.round(v).toLocaleString('de-DE')}`),
-		})
-		return () => controls.stop()
-	}, [])
 
 	return (
 		<div className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}>
@@ -54,9 +45,9 @@ export function Problema() {
 								animate={{ opacity: 1, scale: 1, y: 0 }}
 								transition={{
 									type: 'spring',
-									stiffness: 300,
+									stiffness: 280,
 									damping: 22,
-									delay: 0.5 + i * 0.15,
+									delay: CARD_DELAY_FIRST + i * CARD_STAGGER,
 								}}
 							>
 								<motion.span
@@ -89,11 +80,20 @@ export function Problema() {
 						type: 'spring',
 						stiffness: 260,
 						damping: 20,
-						delay: 1.1,
+						delay: NUMBER_BLOCK_DELAY,
 					}}
 				>
-					<span className="block text-white font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl tabular-nums">
-						{countDisplay}
+					<span className="block text-white font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+						<SlidingNumber
+							from={0}
+							to={COUNT_TARGET}
+							duration={COUNT_DURATION}
+							delay={NUMBER_BLOCK_DELAY}
+							prefix="+"
+							locale="de-DE"
+							countStartsAfterVisible
+							className="text-inherit"
+						/>
 					</span>
 					<span className="text-white/80 text-base sm:text-lg mt-1 font-medium">
 						{pitchCopy.problema.bigNumberSub}

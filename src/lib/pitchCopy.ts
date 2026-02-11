@@ -30,8 +30,14 @@ export const pitchCopy = {
 			'Roles, trazabilidad y métricas en vivo',
 			'Personalizable sin romper el sistema',
 		],
-		/** Frases cortas para el slide tipo Shark Tank (icono + una línea) */
+		/** Frases cortas para el slide (icono + título de card) */
 		short: ['Un solo flujo', 'Métricas en vivo', 'Personalizable y estable'],
+		/** Hasta 3 bullets por card (mismo orden que short) */
+		cardBullets: [
+			['Pacientes + casos + informes + cobros, en un solo flujo'],
+			['Roles, trazabilidad y métricas en vivo'],
+			['Personalizable sin romper el sistema'],
+		],
 		signature: 'Eugenio Andreone · Jesús Freites',
 	},
 
