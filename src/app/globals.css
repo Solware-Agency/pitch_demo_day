@@ -205,15 +205,15 @@
     animation: float linear infinite;
   }
 
-  /* Solwy glow pulse - resplandor detrás que pulsa (el Solwy no cambia de tamaño) */
+  /* Solwy glow pulse - resplandor detrás (gradiente radial que pulsa) */
   @keyframes solwy-glow-pulse {
     0%, 100% {
       opacity: 0.4;
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
     }
     50% {
       opacity: 0.8;
-      transform: scale(1.15);
+      transform: translate(-50%, -50%) scale(1.2);
     }
   }
   .animate-solwy-glow-pulse {

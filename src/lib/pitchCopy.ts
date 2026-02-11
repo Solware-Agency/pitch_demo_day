@@ -31,6 +31,10 @@ export const pitchCopy = {
 		short: ['Nadie la analiza', 'Nadie la evalúa', 'Nadie se guía por ella'],
 		bigNumber: '+1.700',
 		bigNumberSub: 'parches digitales',
+		/** Fase 2: número grande */
+		bigNumberLine: '+1.700 centros de salud',
+		/** Fase 3: texto de impacto */
+		followUpLine: 'Con un estimado de 800 pacientes mensuales por centro da más de 1.300.000 informes mensuales',
 	},
 
 	// --- REVEAL (1:05–1:25) ---
@@ -55,7 +59,7 @@ export const pitchCopy = {
 
 	// --- EVIDENCIA (1:25–1:55) ---
 	evidencia: {
-		title: 'VALIDADO EN 3 LABORATORIOS',
+		title: 'VALIDADO EN 4 LABORATORIOS',
 		metrics: [
 			{ value: '2:00 → 0:30', sub: '−75%' },
 			{ value: '12–15 → 6–9 MIN', sub: '' },

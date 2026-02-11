@@ -4,13 +4,13 @@ import type { MotionValue } from 'framer-motion'
 import React, { useEffect } from 'react'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { SiWhatsapp, SiGmail, SiAdobeacrobatreader, SiGoogledrive } from 'react-icons/si'
-import { BsFileEarmarkText } from 'react-icons/bs'
+import { BsFileEarmarkText, BsCalendar3 } from 'react-icons/bs'
 import { FaFolder, FaImage } from 'react-icons/fa'
 import { RiFileExcel2Line } from 'react-icons/ri'
 import { pitchCopy } from '@src/lib/pitchCopy'
 import { slideBg } from '@src/lib/slideTheme'
 
-/** Iconos reales: WhatsApp, Gmail, PDF, Papel, Excel, Carpeta, Drive, Imagen */
+/** Iconos: WhatsApp, Gmail, PDF, Papel, Excel, Carpeta, Drive, Imagen, Calendario */
 const ICONS = [
 	{ Icon: SiWhatsapp, label: 'WhatsApp' },
 	{ Icon: SiGmail, label: 'Gmail' },
@@ -20,6 +20,7 @@ const ICONS = [
 	{ Icon: FaFolder, label: 'Carpeta' },
 	{ Icon: SiGoogledrive, label: 'Drive' },
 	{ Icon: FaImage, label: 'Imagen' },
+	{ Icon: BsCalendar3, label: 'Calendario' },
 ]
 
 const ORBIT_RADIUS_MIN = 240
@@ -30,9 +31,9 @@ const ORBIT_DURATION = 40
 const ORBIT_RADIUS_MIN_2 = 70
 const ORBIT_RADIUS_MAX_2 = 240
 
-// Dispersión: cada icono a un radio un poco distinto para que no estén en un anillo perfecto
-const RADIUS_OFFSETS = [0, 34, -28, 42, -24, 32, 20, -26]
-const RADIUS_OFFSETS_2 = [0, 28, -20, 34, -16, 24, 14, -18]
+// Dispersión: cada icono a un radio un poco distinto
+const RADIUS_OFFSETS = [0, 34, -28, 42, -24, 32, 20, -26, 18]
+const RADIUS_OFFSETS_2 = [0, 28, -20, 34, -16, 24, 14, -18, 12]
 
 // Tiempo entre la aparición de un icono y el siguiente (que se note uno a uno)
 const STAGGER_DURATION = 0.5
@@ -56,7 +57,6 @@ function OrbitingIcon({
 	radiusMin?: number
 	radiusMax?: number
 	radiusOffsets?: number[]
-	/** Segundos a sumar al delay de aparición (p.ej. para la segunda espiral) */
 	appearDelayOffset?: number
 }) {
 	const radius = radiusMin + (radiusMax - radiusMin) * (index / (ICONS.length - 1)) + (radiusOffsets[index] ?? 0)
@@ -65,24 +65,28 @@ function OrbitingIcon({
 	const baseAngleRad = (baseAngleDeg * Math.PI) / 180
 	const x = radius * Math.cos(baseAngleRad)
 	const y = radius * Math.sin(baseAngleRad)
+	// Origen fuera de pantalla, en la misma dirección (lanzadas desde afuera, aterrizan en órbita)
+	const launchDist = 1.4
+	const xStart = x * launchDist
+	const yStart = y * launchDist
 	const counterRotate = useTransform(orbitAngle, (v) => -(v + baseAngleDeg))
 	const delay = 0.4 + appearDelayOffset + index * STAGGER_DURATION
 	return (
 		<motion.div
 			className="absolute left-0 top-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl bg-white/15 backdrop-blur-md border-2 border-white/30 flex items-center justify-center shadow-xl"
-			style={{
-				translateX: x,
-				translateY: y,
-				rotate: counterRotate,
-			}}
-			initial={{ opacity: 0, scale: 0.3 }}
+			style={{ rotate: counterRotate }}
+			initial={{ translateX: xStart, translateY: yStart, opacity: 0, scale: 0.9 }}
 			animate={{
+				translateX: [xStart, x * 0.88, x],
+				translateY: [yStart, y * 0.88, y],
 				opacity: 1,
-				scale: 1,
+				scale: [0.9, 1.18, 1],
 			}}
 			transition={{
-				opacity: { duration: 0.4, delay, ease: [0.25, 0.46, 0.45, 0.94] },
-				scale: { type: 'spring', stiffness: 280, damping: 20, delay },
+				translateX: { duration: 0.75, delay, times: [0, 0.7, 1], ease: ['easeOut', [0.34, 1.56, 0.64, 1]] },
+				translateY: { duration: 0.75, delay, times: [0, 0.7, 1], ease: ['easeOut', [0.34, 1.56, 0.64, 1]] },
+				opacity: { duration: 0.25, delay: delay + 0.25 },
+				scale: { duration: 0.75, delay, times: [0, 0.65, 1], ease: ['easeOut', [0.34, 1.56, 0.64, 1]] },
 			}}
 		>
 			<motion.span
@@ -170,15 +174,6 @@ export function Hook() {
 					</motion.div>
 				</div>
 			</div>
-
-			<motion.p
-				className="text-white/70 text-sm sm:text-base md:text-lg mt-8 sm:mt-12 text-center z-10"
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 0.5, delay: 2.2 }}
-			>
-				{pitchCopy.hook.subline}
-			</motion.p>
 		</div>
 	)
 }

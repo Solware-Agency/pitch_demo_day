@@ -31,20 +31,15 @@ export function Reveal() {
 				/>
 			</motion.div>
 
-			{/* Solwy con glow pulse detrás (el Solwy no cambia de tamaño) */}
+			{/* Solwy - mismo glow que dashboard Solhub_prod */}
 			<motion.div
 				className="absolute top-8 right-8 sm:right-12 w-24 aspect-[647.42/831.52] z-20 flex items-center justify-center"
 				initial={{ opacity: 0, y: -80 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
 			>
-				<div
-					className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full animate-solwy-glow-pulse"
-					style={{
-						background: 'radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, transparent 70%)',
-					}}
-				/>
-				<div className="relative w-full h-full" style={{ filter: 'drop-shadow(0 0 12px rgba(99, 102, 241, 0.3))' }}>
+				<div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-xl opacity-30 animate-pulse z-0" />
+				<div className="relative w-full h-full z-[1]">
 					<EyeTrackingComponent className="w-full h-full" />
 				</div>
 			</motion.div>

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: 'Pitch Audience',
+	title: 'Demo Day',
 	description: 'Presentación interactiva de pitch',
 };
 
