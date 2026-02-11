@@ -1,3 +1,4 @@
+export { Alarma } from './Alarma'
 export { Portada } from './Portada'
 export { Hook } from './Hook'
 export { Problema } from './Problema'

@@ -205,6 +205,21 @@
     animation: float linear infinite;
   }
 
+  /* Solwy glow pulse - resplandor detrás que pulsa (el Solwy no cambia de tamaño) */
+  @keyframes solwy-glow-pulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.15);
+    }
+  }
+  .animate-solwy-glow-pulse {
+    animation: solwy-glow-pulse 2.5s ease-in-out infinite;
+  }
+
   /* Newton's Pendulum Animation */
   @keyframes pendulum1 {
     0% {

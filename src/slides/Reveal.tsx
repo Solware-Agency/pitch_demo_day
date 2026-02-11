@@ -31,15 +31,22 @@ export function Reveal() {
 				/>
 			</motion.div>
 
-			{/* Solwy bajando con glow */}
+			{/* Solwy con glow pulse detrás (el Solwy no cambia de tamaño) */}
 			<motion.div
-				className="absolute top-8 right-8 sm:right-12 w-16 sm:w-20 aspect-[647.42/831.52] z-20"
+				className="absolute top-8 right-8 sm:right-12 w-24 aspect-[647.42/831.52] z-20 flex items-center justify-center"
 				initial={{ opacity: 0, y: -80 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-				style={{ filter: 'drop-shadow(0 0 20px rgba(99, 102, 241, 0.4))' }}
 			>
-				<EyeTrackingComponent className="w-full h-full" />
+				<div
+					className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full animate-solwy-glow-pulse"
+					style={{
+						background: 'radial-gradient(circle, rgba(99, 102, 241, 0.5) 0%, transparent 70%)',
+					}}
+				/>
+				<div className="relative w-full h-full" style={{ filter: 'drop-shadow(0 0 12px rgba(99, 102, 241, 0.3))' }}>
+					<EyeTrackingComponent className="w-full h-full" />
+				</div>
 			</motion.div>
 
 			{/* 3 cards — entran una por una, con bullets debajo (max 3 por card) */}

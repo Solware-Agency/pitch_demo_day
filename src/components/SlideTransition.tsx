@@ -207,7 +207,7 @@ export function FadeTransition({ children, slideIndex, direction, className }: S
 					className="absolute inset-0 w-full h-full slide-transition-container"
 					style={{ willChange: 'opacity' }}
 				>
-					<div className="slide-transition-content w-full h-full overflow-y-auto">{children}</div>
+					<div className="slide-transition-content w-full h-full overflow-hidden">{children}</div>
 				</motion.div>
 			</AnimatePresence>
 		</div>

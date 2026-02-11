@@ -7,6 +7,7 @@ import { FadeTransition } from '@src/components/SlideTransition'
 import { useSlideAnimations } from '@src/hooks/useSlideAnimations'
 import { useMobileScroll } from '@src/hooks/useMobileScroll'
 import {
+	Alarma,
 	Portada,
 	Hook,
 	Problema,
@@ -18,6 +19,7 @@ import {
 
 const slides = [
 	{ id: 'portada', component: Portada },
+	{ id: 'alarma', component: Alarma },
 	{ id: 'hook', component: Hook },
 	{ id: 'problema', component: Problema },
 	{ id: 'reveal', component: Reveal },
@@ -92,7 +94,7 @@ export default function SlidesPage() {
 	const direction = getTransitionDirection(previousSlideRef.current, slideActual)
 
 	return (
-		<div className="w-full overflow-x-hidden">
+		<div className="w-full min-h-dvh overflow-y-auto overflow-x-hidden">
 			<DeckControls
 				slideActual={slideActual}
 				totalSlides={totalSlides}
@@ -102,7 +104,7 @@ export default function SlidesPage() {
 			/>
 
 			<div
-				className="w-full h-dvh min-h-dvh relative cursor-pointer"
+				className="w-full min-h-dvh relative cursor-pointer"
 				onClick={handleSlideClick}
 				onTouchStart={handleTouchStart}
 				onTouchEnd={handleTouchEnd}
@@ -111,7 +113,7 @@ export default function SlidesPage() {
 				<div className="absolute inset-0 z-0">
 					<FloatingLinesBackground />
 				</div>
-				<FadeTransition slideIndex={slideActual} direction={direction} className="w-full relative z-10">
+				<FadeTransition slideIndex={slideActual} direction={direction} className="w-full z-10">
 					{React.createElement(slides[slideActual].component)}
 				</FadeTransition>
 			</div>

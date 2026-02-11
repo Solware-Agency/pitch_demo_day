@@ -4,6 +4,18 @@
  */
 
 export const pitchCopy = {
+	// --- ALARMA (primer slide: 6:00) ---
+	alarma: {
+		time: '6:00 de la mañana',
+		notificaciones: [
+			{ label: 'WhatsApp', count: 5 },
+			{ label: 'Gmail', count: 7 },
+			{ label: 'PDF', count: 3 },
+			{ label: 'Correo', count: 4 },
+			{ label: 'Excel', count: 2 },
+		] as const,
+	},
+
 	// --- HOOK (0:00–0:15) ---
 	hook: {
 		headline: 'TU DIAGNÓSTICO ESTÁ REGADO',
