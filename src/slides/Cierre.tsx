@@ -2,12 +2,20 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { FloatingLinesBackground } from '@src/components/FloatingLines'
 import { pitchCopy } from '@src/lib/pitchCopy'
 import { slideBg, solhubColors } from '@src/lib/slideTheme'
 
 const LOGO_SOLHUB_SIN_ESLOGAN =
 	'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Logos/SolHub/SolHub_ORIG%20-%20SIN%20ESLOGAN.svg'
+
+const CARD_STAGGER = 0.45
+const CARD_DELAY_FIRST = 0.5
+const NUM_CARDS = 6
+const LOGO_DELAY = CARD_DELAY_FIRST + NUM_CARDS * CARD_STAGGER + 0.25
+const LINES_DELAY_BASE = LOGO_DELAY + 0.6
+const LINES_STAGGER = 0.12
+const TEXTS_DELAY = LINES_DELAY_BASE + NUM_CARDS * LINES_STAGGER + 0.5
+const CARD_GLOW_DELAY = TEXTS_DELAY - 0.2
 
 const ISLAND_POSITIONS = [
 	{ top: '10%', left: '12%' },
@@ -65,10 +73,12 @@ export function Cierre() {
 		const t = setTimeout(measure, 100)
 		const t2 = setTimeout(measure, 800)
 		const t3 = setTimeout(measure, 2000)
+		const t4 = setTimeout(measure, 4000) // después de que el logo haya aparecido
 		return () => {
 			clearTimeout(t)
 			clearTimeout(t2)
 			clearTimeout(t3)
+			clearTimeout(t4)
 		}
 	}, [measure])
 
@@ -77,7 +87,6 @@ export function Cierre() {
 			ref={containerRef}
 			className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}
 		>
-			<FloatingLinesBackground />
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
 
 			{/* 6 islas */}
@@ -101,10 +110,10 @@ export function Cierre() {
 						boxShadow: [glowStrong, glowSoft, glowStrong],
 					}}
 					transition={{
-						opacity: { duration: 0.55, delay: 0.15 + i * 0.2, ease: [0.25, 0.46, 0.45, 0.94] },
-						scale: { duration: 0.55, delay: 0.15 + i * 0.2, ease: [0.25, 0.46, 0.45, 0.94] },
+						opacity: { duration: 0.5, delay: CARD_DELAY_FIRST + i * CARD_STAGGER, ease: [0.25, 0.46, 0.45, 0.94] },
+						scale: { duration: 0.5, delay: CARD_DELAY_FIRST + i * CARD_STAGGER, ease: [0.25, 0.46, 0.45, 0.94] },
 						boxShadow: {
-							delay: 2.2 + i * 0.08,
+							delay: CARD_GLOW_DELAY + i * 0.08,
 							duration: 2.2,
 							repeat: Infinity,
 							ease: 'easeInOut',
@@ -117,20 +126,20 @@ export function Cierre() {
 				)
 			})}
 
-			{/* Logo SolHub centro */}
+			{/* Logo SolHub centro — después de las cards */}
 			<motion.div
 				ref={centerRef}
 				className="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 z-20"
 				initial={{ opacity: 0, scale: 0.3 }}
 				animate={{ opacity: 1, scale: 1 }}
-				transition={{ duration: 0.65, delay: 1.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+				transition={{ duration: 0.65, delay: LOGO_DELAY, ease: [0.25, 0.46, 0.45, 0.94] }}
 			>
 				<motion.img
 					src={LOGO_SOLHUB_SIN_ESLOGAN}
 					alt="SolHub"
 					className="h-20 w-auto sm:h-24 md:h-28 lg:h-32 object-contain"
 					animate={{ scale: [1, 1.04, 1] }}
-					transition={{ duration: 2.5, delay: 2.8, ease: 'easeInOut' }}
+					transition={{ duration: 2.5, delay: LOGO_DELAY + 0.8, ease: 'easeInOut' }}
 				/>
 			</motion.div>
 
@@ -200,8 +209,8 @@ export function Cierre() {
 							initial={{ pathLength: 0, opacity: 0 }}
 							animate={{ pathLength: 1, opacity: 1 }}
 							transition={{
-								pathLength: { duration: 0.75, delay: 1.6 + i * 0.1, ease: 'easeOut' },
-								opacity: { duration: 0.3, delay: 1.6 + i * 0.1 },
+								pathLength: { duration: 0.75, delay: LINES_DELAY_BASE + i * LINES_STAGGER, ease: 'easeOut' },
+								opacity: { duration: 0.3, delay: LINES_DELAY_BASE + i * LINES_STAGGER },
 							}}
 						/>
 					))}
@@ -212,7 +221,7 @@ export function Cierre() {
 				className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-indigo-500/20 blur-2xl -z-10"
 				initial={{ opacity: 0, scale: 0.5 }}
 				animate={{ opacity: 1, scale: 1 }}
-				transition={{ duration: 0.9, delay: 1.5 }}
+				transition={{ duration: 0.9, delay: LOGO_DELAY }}
 			/>
 
 			<motion.div
@@ -220,7 +229,7 @@ export function Cierre() {
 				initial="hidden"
 				animate="visible"
 				variants={{
-					visible: { transition: { staggerChildren: 0.12, delayChildren: 2.4 } },
+					visible: { transition: { staggerChildren: 0.12, delayChildren: TEXTS_DELAY } },
 					hidden: {},
 				}}
 			>

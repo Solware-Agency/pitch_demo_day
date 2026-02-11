@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { GitMerge, Activity, Puzzle } from 'lucide-react'
-import { FloatingLinesBackground } from '@src/components/FloatingLines'
 import EyeTrackingComponent from '@src/components/RobotTraking'
 import { pitchCopy } from '@src/lib/pitchCopy'
 import { slideBg } from '@src/lib/slideTheme'
@@ -17,7 +16,6 @@ const LOGO_SOLHUB_SIN_ESLOGAN =
 export function Reveal() {
 	return (
 		<div className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}>
-			<FloatingLinesBackground />
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
 			{/* Solo logo SolHub */}
 			<motion.div

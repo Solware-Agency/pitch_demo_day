@@ -7,7 +7,6 @@ import { SiWhatsapp, SiGmail, SiAdobeacrobatreader, SiGoogledrive } from 'react-
 import { BsFileEarmarkText } from 'react-icons/bs'
 import { FaFolder, FaImage } from 'react-icons/fa'
 import { RiFileExcel2Line } from 'react-icons/ri'
-import { FloatingLinesBackground } from '@src/components/FloatingLines'
 import { pitchCopy } from '@src/lib/pitchCopy'
 import { slideBg } from '@src/lib/slideTheme'
 
@@ -127,7 +126,6 @@ export function Hook() {
 
 	return (
 		<div className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}>
-			<FloatingLinesBackground />
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
 			{/* Contenedor del título + centro de la órbita */}
 			<div className="relative z-10 flex flex-col items-center">

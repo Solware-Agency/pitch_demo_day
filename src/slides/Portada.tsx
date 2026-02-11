@@ -1,4 +1,3 @@
-import { FloatingLinesBackground } from '@src/components/FloatingLines'
 import EyeTrackingComponent from '@src/components/RobotTraking'
 import { slideBg } from '@src/lib/slideTheme'
 
@@ -8,7 +7,6 @@ const LOGO_SOLHUB_URL =
 export function Portada() {
 	return (
 		<div className={`${slideBg.portada} w-full flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-dvh`}>
-			<FloatingLinesBackground />
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
 			{/* Solwy (mascota) - esquina inferior derecha - desde solhubprod RobotTraking */}
 			<div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-20 sm:w-24 md:w-28 aspect-[647.42/831.52] pointer-events-none z-10">

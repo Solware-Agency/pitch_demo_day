@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FloatingLinesBackground } from '@src/components/FloatingLines'
 import { slideBg } from '@src/lib/slideTheme'
 
 const DEMO_VIDEO_URL =
@@ -10,7 +9,6 @@ const DEMO_VIDEO_URL =
 export function Demo() {
 	return (
 		<div className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}>
-			<FloatingLinesBackground />
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
 			<div className="relative z-10 w-full max-w-4xl flex items-center justify-center flex-1 min-h-0 py-4">
 				<motion.div
@@ -26,6 +24,9 @@ export function Demo() {
 						className="w-full h-full object-contain block"
 						playsInline
 						preload="auto"
+						autoPlay
+						muted
+						loop
 						style={{ minHeight: '240px' }}
 					>
 						Tu navegador no soporta la reproducción de video.

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { solhubColors } from '@src/lib/slideTheme'
 import {
 	Scene,
@@ -380,14 +380,18 @@ export default function FloatingLines({
 	)
 }
 
-/** Fondo de líneas flotantes en todas las slides; colores basados en el logo SolHub. */
-export function FloatingLinesBackground() {
+/** Referencias estables para no provocar re-mount del WebGL cuando el padre re-renderiza */
+const LINES_GRADIENT_STABLE = [...solhubColors.floatingLines]
+const ENABLED_WAVES_STABLE: ['top', 'middle', 'bottom'] = ['top', 'middle', 'bottom']
+const LINE_COUNT_STABLE: [number, number, number] = [5, 6, 5]
+
+function FloatingLinesBackgroundInner() {
 	return (
 		<div className="absolute inset-0 w-full h-full pointer-events-none">
 			<FloatingLines
-				linesGradient={[...solhubColors.floatingLines]}
-				enabledWaves={['top', 'middle', 'bottom']}
-				lineCount={[5, 6, 5]}
+				linesGradient={LINES_GRADIENT_STABLE}
+				enabledWaves={ENABLED_WAVES_STABLE}
+				lineCount={LINE_COUNT_STABLE}
 				animationSpeed={0.45}
 				interactive={false}
 				parallax={false}
@@ -396,3 +400,6 @@ export function FloatingLinesBackground() {
 		</div>
 	)
 }
+
+/** Fondo de líneas flotantes en todas las slides; memoizado para no re-renderizar al cambiar de slide. */
+export const FloatingLinesBackground = React.memo(FloatingLinesBackgroundInner)

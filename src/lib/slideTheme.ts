@@ -26,10 +26,10 @@ export const solhubColors = {
 }
 
 export const slideBg = {
-	/** Fondo base para todas las slides: oscuro + FloatingLines encima */
-	base: 'bg-[#0a0a0f] min-h-dvh',
+	/** Fondo base: transparente para que se vea el FloatingLines de la página; el overlay en cada slide añade el oscurecimiento */
+	base: 'min-h-dvh',
 	/** Alias para compatibilidad */
-	dark: 'bg-[#0a0a0f] min-h-dvh',
-	/** Portada: mismo base oscuro (FloatingLines da el estilo) */
-	portada: 'bg-[#0a0a0f] min-h-dvh',
+	dark: 'min-h-dvh',
+	/** Portada */
+	portada: 'min-h-dvh',
 } as const

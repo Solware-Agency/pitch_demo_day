@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { SearchX, BarChart3, Compass } from 'lucide-react'
-import { FloatingLinesBackground } from '@src/components/FloatingLines'
 import { SlidingNumber } from '@src/components/ui/sliding-number'
 import { pitchCopy } from '@src/lib/pitchCopy'
 import { slideBg } from '@src/lib/slideTheme'
@@ -20,7 +19,6 @@ export function Problema() {
 
 	return (
 		<div className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}>
-			<FloatingLinesBackground />
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
 			<div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
 				{/* Headline */}

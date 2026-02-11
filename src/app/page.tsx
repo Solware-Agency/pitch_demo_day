@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react'
 import { DeckControls } from '@src/components/DeckControls'
+import { FloatingLinesBackground } from '@src/components/FloatingLines'
 import { FadeTransition } from '@src/components/SlideTransition'
 import { useSlideAnimations } from '@src/hooks/useSlideAnimations'
 import { useMobileScroll } from '@src/hooks/useMobileScroll'
@@ -106,7 +107,11 @@ export default function SlidesPage() {
 				onTouchStart={handleTouchStart}
 				onTouchEnd={handleTouchEnd}
 			>
-				<FadeTransition slideIndex={slideActual} direction={direction} className="w-full">
+				{/* Fondo único a nivel página: no re-renderiza cuando el slide actualiza estado */}
+				<div className="absolute inset-0 z-0">
+					<FloatingLinesBackground />
+				</div>
+				<FadeTransition slideIndex={slideActual} direction={direction} className="w-full relative z-10">
 					{React.createElement(slides[slideActual].component)}
 				</FadeTransition>
 			</div>
