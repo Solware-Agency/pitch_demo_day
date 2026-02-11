@@ -91,7 +91,7 @@ export const pitchCopy = {
 		remateLine1: 'UNA SOLA HISTORIA.',
 		remateLine2: 'EN UN SOLO LUGAR.',
 		signature: 'Eugenio Andreone · Jesús Freites — SolHub',
-		cliffhanger:
-			'Hoy les mostramos el control del laboratorio. Lo próximo es conectar todo el ecosistema.',
+		cliffhangerLine1: 'Hoy les mostramos el control del laboratorio.',
+		cliffhangerLine2: 'Lo próximo es conectar todo el ecosistema.',
 	},
 } as const

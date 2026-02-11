@@ -11,6 +11,8 @@ interface DeckControlsProps {
 	onCambiarSlide: (slide: number) => void
 	onToggleInteractividad?: () => void
 	participantes?: number
+	/** Cuando true, el botón Next no se deshabilita en el último slide (ej. Cierre con fases) */
+	canAdvanceOnLastSlide?: boolean
 }
 
 function formatTime(seconds: number): string {
@@ -23,6 +25,7 @@ export function DeckControls({
 	slideActual,
 	totalSlides,
 	onCambiarSlide,
+	canAdvanceOnLastSlide = false,
 }: DeckControlsProps) {
 	const [pantallaCompleta, setPantallaCompleta] = useState(false)
 	const [menuAbierto, setMenuAbierto] = useState(false)
@@ -128,7 +131,7 @@ export function DeckControls({
 				case 'ArrowRight':
 				case ' ':
 					e.preventDefault()
-					if (slideActual < totalSlides - 1) onCambiarSlide(slideActual + 1)
+					if (slideActual < totalSlides - 1 || canAdvanceOnLastSlide) onCambiarSlide(slideActual + 1)
 					break
 				case 'Home':
 					onCambiarSlide(0)
@@ -145,7 +148,7 @@ export function DeckControls({
 		}
 		window.addEventListener('keydown', manejarTecla)
 		return () => window.removeEventListener('keydown', manejarTecla)
-	}, [slideActual, totalSlides, onCambiarSlide])
+	}, [slideActual, totalSlides, onCambiarSlide, canAdvanceOnLastSlide])
 
 	// Cerrar menú al hacer click fuera
 	useEffect(() => {
@@ -228,7 +231,7 @@ export function DeckControls({
 								size="icon"
 								className="h-8 w-8"
 								onClick={() => onCambiarSlide(slideActual + 1)}
-								disabled={slideActual === totalSlides - 1}
+								disabled={slideActual === totalSlides - 1 && !canAdvanceOnLastSlide}
 							>
 								<ChevronRight className="w-4 h-4" />
 							</Button>

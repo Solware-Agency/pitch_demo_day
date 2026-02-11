@@ -30,11 +30,13 @@ const slides = [
 
 const PROBLEMA_SLIDE_INDEX = 3
 const EVIDENCIA_SLIDE_INDEX = 5
+const CIERRE_SLIDE_INDEX = 7
 
 export default function SlidesPage() {
 	const [slideActual, setSlideActual] = useState(0)
 	const [problemaPhase, setProblemaPhase] = useState(0)
 	const [evidenciaPhase, setEvidenciaPhase] = useState(0)
+	const [cierrePhase, setCierrePhase] = useState(0)
 	const [mostrarInteractividad, setMostrarInteractividad] = useState(false)
 	const previousSlideRef = useRef(0)
 	const touchStartX = useRef(0)
@@ -51,6 +53,7 @@ export default function SlidesPage() {
 		if (nuevoSlide >= 0 && nuevoSlide < totalSlides) {
 			if (nuevoSlide === PROBLEMA_SLIDE_INDEX) setProblemaPhase(0)
 			if (nuevoSlide === EVIDENCIA_SLIDE_INDEX) setEvidenciaPhase(0)
+			if (nuevoSlide === CIERRE_SLIDE_INDEX) setCierrePhase(0)
 			previousSlideRef.current = slideActual
 			setSlideActual(nuevoSlide)
 		}
@@ -73,7 +76,9 @@ export default function SlidesPage() {
 		if (clickX < slideWidth / 3) {
 			if (slideActual > 0) cambiarSlide(slideActual - 1)
 		} else if (clickX > (slideWidth * 2) / 3) {
-			if (slideActual < totalSlides - 1) {
+			if (slideActual === CIERRE_SLIDE_INDEX && cierrePhase < 1) {
+				setCierrePhase((p) => p + 1)
+			} else if (slideActual < totalSlides - 1) {
 				if (slideActual === PROBLEMA_SLIDE_INDEX && problemaPhase < 1) {
 					setProblemaPhase((p) => p + 1)
 				} else if (slideActual === EVIDENCIA_SLIDE_INDEX && evidenciaPhase < 1) {
@@ -102,13 +107,17 @@ export default function SlidesPage() {
 
 		if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
 			if (deltaX > 0 && slideActual > 0) cambiarSlide(slideActual - 1)
-			else if (deltaX < 0 && slideActual < totalSlides - 1) {
-				if (slideActual === PROBLEMA_SLIDE_INDEX && problemaPhase < 1) {
-					setProblemaPhase((p) => p + 1)
-				} else if (slideActual === EVIDENCIA_SLIDE_INDEX && evidenciaPhase < 1) {
-					setEvidenciaPhase((p) => p + 1)
-				} else {
-					cambiarSlide(slideActual + 1)
+			else if (deltaX < 0) {
+				if (slideActual === CIERRE_SLIDE_INDEX && cierrePhase < 1) {
+					setCierrePhase((p) => p + 1)
+				} else if (slideActual < totalSlides - 1) {
+					if (slideActual === PROBLEMA_SLIDE_INDEX && problemaPhase < 1) {
+						setProblemaPhase((p) => p + 1)
+					} else if (slideActual === EVIDENCIA_SLIDE_INDEX && evidenciaPhase < 1) {
+						setEvidenciaPhase((p) => p + 1)
+					} else {
+						cambiarSlide(slideActual + 1)
+					}
 				}
 			}
 		}
@@ -121,11 +130,14 @@ export default function SlidesPage() {
 			<DeckControls
 				slideActual={slideActual}
 				totalSlides={totalSlides}
+				canAdvanceOnLastSlide={slideActual === CIERRE_SLIDE_INDEX && cierrePhase < 1}
 				onCambiarSlide={(nuevoSlide) => {
 					if (nuevoSlide === slideActual + 1 && slideActual === PROBLEMA_SLIDE_INDEX && problemaPhase < 1) {
 						setProblemaPhase((p) => p + 1)
 					} else if (nuevoSlide === slideActual + 1 && slideActual === EVIDENCIA_SLIDE_INDEX && evidenciaPhase < 1) {
 						setEvidenciaPhase((p) => p + 1)
+					} else if (nuevoSlide === slideActual + 1 && slideActual === CIERRE_SLIDE_INDEX && cierrePhase < 1) {
+						setCierrePhase((p) => p + 1)
 					} else {
 						cambiarSlide(nuevoSlide)
 					}
@@ -145,7 +157,7 @@ export default function SlidesPage() {
 					<FloatingLinesBackground />
 				</div>
 				<FadeTransition slideIndex={slideActual} direction={direction} className="w-full z-10">
-					{React.createElement(slides[slideActual].component, slides[slideActual].id === 'problema' ? { phase: problemaPhase } : slides[slideActual].id === 'evidencia' ? { phase: evidenciaPhase } : undefined)}
+					{React.createElement(slides[slideActual].component, slides[slideActual].id === 'problema' ? { phase: problemaPhase } : slides[slideActual].id === 'evidencia' ? { phase: evidenciaPhase } : slides[slideActual].id === 'cierre' ? { phase: cierrePhase } : undefined)}
 				</FadeTransition>
 			</div>
 		</div>
