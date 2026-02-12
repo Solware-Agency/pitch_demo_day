@@ -35,6 +35,12 @@ export const pitchCopy = {
 		bigNumberLine: '+1.700 centros de salud',
 		/** Fase 3: texto de impacto */
 		followUpLine: 'Con un estimado de 800 pacientes mensuales por centro da más de 1.300.000 informes mensuales',
+		/** Fase 2: 3 cards separadas — índice 1 es la central (número más grande). value y prefix para SlidingNumber */
+		numeroCards: [
+			{ value: 1700, prefix: '+', label: 'centros de salud' },
+			{ value: 1300000, prefix: '', label: 'informes mensuales' },
+			{ value: 800, prefix: '', label: 'pacientes/centro' },
+		] as const,
 	},
 
 	// --- REVEAL (1:05–1:25) ---
@@ -91,7 +97,12 @@ export const pitchCopy = {
 		remateLine1: 'UNA SOLA HISTORIA.',
 		remateLine2: 'EN UN SOLO LUGAR.',
 		signature: 'Eugenio Andreone · Jesús Freites — SolHub',
-		cliffhangerLine1: 'Hoy les mostramos el control del laboratorio.',
-		cliffhangerLine2: 'Lo próximo es conectar todo el ecosistema.',
+		cliffhangerLine1: 'Una sola historia',
+		cliffhangerLine2: 'Un solo lugar',
+	},
+
+	// --- QUIZ FINAL ---
+	quizFinal: {
+		signature: 'Eugenio Andreone · Jesús Freites — SolHub',
 	},
 } as const

@@ -6,6 +6,7 @@ export { Reveal } from './Reveal'
 export { Evidencia } from './Evidencia'
 export { Demo } from './Demo'
 export { Cierre } from './Cierre'
+export { QuizFinal } from './QuizFinal'
 // Deck anterior (no usados en pitch 5 min)
 // export { Dolencia1 } from './Dolencia1'
 // export { Dolencia2 } from './Dolencia2'
