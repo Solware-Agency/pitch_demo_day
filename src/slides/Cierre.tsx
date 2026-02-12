@@ -221,13 +221,13 @@ export function Cierre({ phase = 0 }: CierreProps) {
 			{phase === 1 && (
 					<motion.div
 						key="phase1-content"
-						className="absolute inset-0 z-0"
+						className="absolute inset-0 z-[5]"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.4 }}
 					>
 						<motion.div
-							className="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 z-20"
+							className="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 z-[25]"
 							initial={{ opacity: 0, scale: 0.3, y: -30 }}
 							animate={{ opacity: 1, scale: 1, y: 0 }}
 							exit={{ opacity: 0 }}
@@ -236,7 +236,7 @@ export function Cierre({ phase = 0 }: CierreProps) {
 							<motion.img
 								src={LOGO_SOLHUB_SIN_ESLOGAN}
 								alt="SolHub"
-								className="h-20 w-auto sm:h-24 md:h-28 lg:h-32 object-contain"
+								className="h-20 w-auto sm:h-24 md:h-28 lg:h-32 object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"
 								animate={{ scale: [1, 1.04, 1] }}
 								transition={{ duration: 2.5, delay: LOGO_DELAY + 0.8, ease: 'easeInOut' }}
 							/>
@@ -313,9 +313,9 @@ export function Cierre({ phase = 0 }: CierreProps) {
 							</svg>
 						)}
 
-						{/* Iconos fluyendo por cada línea centro→card (uno por línea, secuencial) */}
+						{/* Iconos fluyendo por cada línea centro→card (uno por línea, secuencial) - z-[3] para que queden debajo del logo */}
 						{cardPositions && centerPoint && cardPositions.length === 6 && (
-							<div className="absolute inset-0 pointer-events-none z-[5]" aria-hidden>
+							<div className="absolute inset-0 pointer-events-none z-[3]" aria-hidden>
 								{cardPositions.map((end, i) => {
 									const Icon = LINE_ICONS[i % LINE_ICONS.length]
 									return (
@@ -324,12 +324,12 @@ export function Cierre({ phase = 0 }: CierreProps) {
 											className="absolute w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-white/25 backdrop-blur flex items-center justify-center text-white -translate-x-1/2 -translate-y-1/2"
 											initial={{ opacity: 0, left: `${centerPoint.x}%`, top: `${centerPoint.y}%` }}
 											animate={{
-												opacity: 1,
+												opacity: [0, 1, 0],
 												left: [`${centerPoint.x}%`, `${end.x}%`, `${centerPoint.x}%`],
 												top: [`${centerPoint.y}%`, `${end.y}%`, `${centerPoint.y}%`],
 											}}
 											transition={{
-												opacity: { delay: LINES_PHASE1_DELAY + i * 1.2, duration: 0.3 },
+												opacity: { duration: 2.5, delay: LINES_PHASE1_DELAY + i * 1.2, repeat: Infinity, ease: 'easeInOut' },
 												left: { duration: 2.5, delay: LINES_PHASE1_DELAY + i * 1.2, repeat: Infinity, ease: 'easeInOut' },
 												top: { duration: 2.5, delay: LINES_PHASE1_DELAY + i * 1.2, repeat: Infinity, ease: 'easeInOut' },
 											}}
@@ -358,14 +358,14 @@ export function Cierre({ phase = 0 }: CierreProps) {
 							}}
 						>
 							<motion.p
-								className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center max-w-3xl"
+								className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center max-w-3xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
 								variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
 								transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
 							>
 								{pitchCopy.cierre.cliffhangerLine1}
 							</motion.p>
 							<motion.p
-								className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center max-w-3xl mt-2"
+								className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center max-w-3xl mt-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
 								variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
 								transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
 							>
