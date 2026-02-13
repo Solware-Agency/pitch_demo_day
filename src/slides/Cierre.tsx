@@ -111,7 +111,7 @@ export function Cierre({ phase = 0 }: CierreProps) {
 						ref={(el) => {
 							cardRefs.current[i] = el
 						}}
-						className="absolute bg-white/25 backdrop-blur-md rounded-2xl border-2 border-white/50 px-5 py-4 sm:px-6 sm:py-4.5 text-center min-w-[110px] sm:min-w-[140px] md:min-w-[160px] z-10 ring-1 ring-white/30"
+						className="absolute bg-white/25 backdrop-blur-md rounded-2xl border-2 border-white/50 px-5 py-4 sm:px-6 sm:py-4.5 lg:px-7 lg:py-5 text-center min-w-[110px] sm:min-w-[140px] md:min-w-[160px] lg:min-w-[180px] tv:min-w-[200px] z-10 ring-1 ring-white/30"
 						style={ISLAND_POSITIONS[i]}
 						initial={{ opacity: 0, scale: 0.6, boxShadow: baseShadow }}
 						animate={{
@@ -130,8 +130,8 @@ export function Cierre({ phase = 0 }: CierreProps) {
 							},
 						}}
 					>
-						<p className="text-white font-bold text-sm sm:text-base drop-shadow-sm">{island.label}</p>
-						<p className="text-white/90 text-xs sm:text-sm mt-0.5">{island.sub}</p>
+						<p className="text-white font-bold text-sm sm:text-base lg:text-lg tv:text-xl drop-shadow-sm">{island.label}</p>
+						<p className="text-white/90 text-xs sm:text-sm lg:text-base tv:text-lg mt-0.5">{island.sub}</p>
 					</motion.div>
 				)
 			})}
@@ -236,7 +236,7 @@ export function Cierre({ phase = 0 }: CierreProps) {
 							<motion.img
 								src={LOGO_SOLHUB_SIN_ESLOGAN}
 								alt="SolHub"
-								className="h-20 w-auto sm:h-24 md:h-28 lg:h-32 tv:h-40 tv-4k:h-48 object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"
+								className="h-20 w-auto sm:h-24 md:h-28 lg:h-36 xl:h-40 tv:h-48 tv-4k:h-56 object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"
 								animate={{ scale: [1, 1.04, 1] }}
 								transition={{ duration: 2.5, delay: LOGO_DELAY + 0.8, ease: 'easeInOut' }}
 							/>
@@ -358,14 +358,14 @@ export function Cierre({ phase = 0 }: CierreProps) {
 							}}
 						>
 							<motion.p
-								className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl tv:text-5xl tv-4k:text-6xl text-center max-w-3xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
+								className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl tv:text-6xl tv-4k:text-7xl text-center max-w-3xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
 								variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
 								transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
 							>
 								{pitchCopy.cierre.cliffhangerLine1}
 							</motion.p>
 							<motion.p
-								className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl tv:text-5xl tv-4k:text-6xl text-center max-w-3xl mt-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
+								className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl tv:text-6xl tv-4k:text-7xl text-center max-w-3xl mt-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
 								variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
 								transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
 							>

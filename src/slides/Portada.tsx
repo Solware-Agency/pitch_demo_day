@@ -16,7 +16,7 @@ export function Portada() {
 					alt="emprendeTECH"
 					width={280}
 					height={168}
-					className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 tv:h-40 tv-4k:h-48 w-auto object-contain"
+					className="h-20 sm:h-24 md:h-28 lg:h-36 xl:h-40 tv:h-48 tv-4k:h-56 w-auto object-contain"
 					priority
 				/>
 			</div>
@@ -24,10 +24,10 @@ export function Portada() {
 				<img
 					src={LOGO_SOLHUB_URL}
 					alt="SolHub"
-					className="h-24 sm:h-28 md:h-36 lg:h-44 xl:h-52 tv:h-64 tv-4k:h-80 w-auto object-contain"
+					className="h-24 sm:h-28 md:h-36 lg:h-48 xl:h-56 tv:h-72 tv-4k:h-96 w-auto object-contain"
 				/>
 				{/* Solwy (mascota) al lado del logo - mismo glow que dashboard Solhub_prod */}
-				<div className="relative w-24 sm:w-28 md:w-32 tv:w-40 tv-4k:w-48 aspect-[647.42/831.52] pointer-events-none flex items-center justify-center shrink-0">
+				<div className="relative w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 tv:w-44 tv-4k:w-56 aspect-[647.42/831.52] pointer-events-none flex items-center justify-center shrink-0">
 					<div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-xl opacity-30 animate-pulse z-0" />
 					<div className="relative w-full h-full z-[1]">
 						<EyeTrackingComponent className="w-full h-full opacity-90" />

@@ -73,7 +73,7 @@ function OrbitingIcon({
 	const delay = 0.4 + appearDelayOffset + index * STAGGER_DURATION
 	return (
 		<motion.div
-			className="absolute left-0 top-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 tv:w-24 tv:h-24 tv-4k:w-28 tv-4k:h-28 rounded-2xl bg-white/15 backdrop-blur-md border-2 border-white/30 flex items-center justify-center shadow-xl"
+			className="absolute left-0 top-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 tv:w-28 tv:h-28 tv-4k:w-32 tv-4k:h-32 rounded-2xl bg-white/15 backdrop-blur-md border-2 border-white/30 flex items-center justify-center shadow-xl"
 			style={{ rotate: counterRotate }}
 			initial={{ translateX: xStart, translateY: yStart, opacity: 0, scale: 0.9 }}
 			animate={{
@@ -99,7 +99,7 @@ function OrbitingIcon({
 					animate={{ rotate: 360 }}
 					transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
 				>
-					<Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 tv:w-12 tv:h-12 tv-4k:w-14 tv-4k:h-14 text-white shrink-0" />
+					<Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-11 lg:h-11 tv:w-12 tv:h-12 tv-4k:w-14 tv-4k:h-14 text-white shrink-0" />
 				</motion.span>
 			</motion.span>
 		</motion.div>
@@ -134,9 +134,9 @@ export function Hook() {
 			{/* Contenedor del título + centro de la órbita */}
 			<div className="relative z-10 flex flex-col items-center">
 				{/* Contenedor título + órbita para que el centro de la órbita sea el título */}
-				<div className="relative min-h-[4em] flex items-center justify-center tv:scale-110 tv-4k:scale-125 origin-center">
+				<div className="relative min-h-[4em] flex items-center justify-center lg:scale-105 tv:scale-125 tv-4k:scale-150 origin-center">
 					<motion.h1
-						className="text-center text-white font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tv:text-7xl tv-4k:text-8xl px-4 relative z-10"
+						className="text-center text-white font-black text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl tv:text-8xl tv-4k:text-9xl px-4 relative z-10"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ duration: 0.4, delay: 0 }}

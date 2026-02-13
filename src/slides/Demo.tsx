@@ -10,9 +10,9 @@ export function Demo() {
 	return (
 		<div className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}>
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
-			<div className="relative z-10 w-full max-w-4xl tv:max-w-6xl tv-4k:max-w-7xl flex items-center justify-center flex-1 min-h-0 py-4">
+			<div className="relative z-10 w-full max-w-4xl lg:max-w-6xl tv:max-w-7xl tv-4k:max-w-[1600px] flex items-center justify-center flex-1 min-h-0 py-4">
 				<motion.div
-					className="w-full rounded-xl overflow-hidden border border-white/20 shadow-2xl bg-black max-h-[min(70vh,560px)] tv:max-h-[85vh] tv-4k:max-h-[90vh] min-h-[280px] tv:min-h-[400px]"
+					className="w-full rounded-xl overflow-hidden border border-white/20 shadow-2xl bg-black max-h-[min(72vh,580px)] lg:max-h-[min(80vh,720px)] tv:max-h-[92vh] tv-4k:max-h-[96vh] min-h-[300px] lg:min-h-[360px] tv:min-h-[500px]"
 					style={{ aspectRatio: '16/9' }}
 					initial={{ opacity: 0, scale: 0.96 }}
 					animate={{ opacity: 1, scale: 1 }}

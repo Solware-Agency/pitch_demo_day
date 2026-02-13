@@ -127,7 +127,7 @@ export function Alarma() {
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
 			{/* Marco del teléfono */}
 			<motion.div
-				className="relative z-10 w-[min(320px,90vw)] tv:scale-125 tv-4k:scale-150 origin-center"
+				className="relative z-10 w-[min(320px,90vw)] lg:scale-110 tv:scale-140 tv-4k:scale-165 origin-center"
 				initial={{ opacity: 0, scale: 0.9 }}
 				animate={{ opacity: 1, scale: 1 }}
 				transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}

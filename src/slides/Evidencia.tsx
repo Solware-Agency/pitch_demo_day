@@ -59,14 +59,14 @@ export function Evidencia({ phase = 0 }: EvidenciaProps) {
 							}}
 						>
 							<motion.h2
-								className="text-white font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl tv:text-5xl tv-4k:text-6xl text-center mb-6 sm:mb-8"
+								className="text-white font-bold text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-5xl tv:text-6xl tv-4k:text-7xl text-center mb-6 sm:mb-8"
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								transition={{ duration: 0.45, delay: 0 }}
 							>
 								{pitchCopy.evidencia.title}
 							</motion.h2>
-							<div className="flex flex-wrap justify-center gap-8 sm:gap-10 md:gap-12 tv:gap-14 max-w-4xl tv:max-w-5xl">
+							<div className="flex flex-wrap justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 tv:gap-16 max-w-4xl lg:max-w-5xl tv:max-w-6xl">
 							{LAB_LOGOS.map((lab, i) => (
 								<motion.div
 									key={lab.name}
@@ -80,7 +80,7 @@ export function Evidencia({ phase = 0 }: EvidenciaProps) {
 										delay: CARD_DELAY_FIRST + i * CARD_STAGGER,
 									}}
 								>
-									<div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 tv:w-52 tv:h-52 tv-4k:w-60 tv-4k:h-60 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center p-3 overflow-hidden">
+									<div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-52 xl:h-52 tv:w-56 tv:h-56 tv-4k:w-64 tv-4k:h-64 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center p-3 overflow-hidden">
 										<img
 											src={lab.src}
 											alt={lab.alt}
@@ -104,7 +104,7 @@ export function Evidencia({ phase = 0 }: EvidenciaProps) {
 						>
 							{/* Título: TIEMPO RECUPERADO — mismo estilo que fase 0 */}
 							<motion.h2
-								className="text-white font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl tv:text-5xl tv-4k:text-6xl text-center mb-6 sm:mb-8"
+								className="text-white font-bold text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-5xl tv:text-6xl tv-4k:text-7xl text-center mb-6 sm:mb-8"
 								initial={{ opacity: 0, y: 8 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.4, delay: 0.15 }}
@@ -129,7 +129,7 @@ export function Evidencia({ phase = 0 }: EvidenciaProps) {
 								<div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
 									{/* 12-15: aparece después del título */}
 									<motion.span
-										className="relative inline-block text-white/60 font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl tv:text-5xl tv-4k:text-6xl"
+										className="relative inline-block text-white/60 font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl tv:text-6xl tv-4k:text-7xl"
 										initial={{ opacity: 0 }}
 										animate={{ opacity: 1 }}
 										transition={{ duration: 0.35, delay: 0.5 }}
@@ -145,7 +145,7 @@ export function Evidencia({ phase = 0 }: EvidenciaProps) {
 									</motion.span>
 									{/* → y 6-9 MIN: aparecen después de 12-15 */}
 									<motion.span
-										className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl tv:text-5xl tv-4k:text-6xl inline-flex items-baseline gap-1"
+										className="text-white font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl tv:text-6xl tv-4k:text-7xl inline-flex items-baseline gap-1"
 										initial={{ opacity: 0 }}
 										animate={{ opacity: 1 }}
 										transition={{ duration: 0.4, delay: 1.0 }}
@@ -153,7 +153,7 @@ export function Evidencia({ phase = 0 }: EvidenciaProps) {
 										→
 									</motion.span>
 									<motion.span
-										className="text-white font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl tv:text-6xl tv-4k:text-7xl tabular-nums inline-flex items-baseline gap-0.5"
+										className="text-white font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tv:text-7xl tv-4k:text-8xl tabular-nums inline-flex items-baseline gap-0.5"
 										initial={{ opacity: 0 }}
 										animate={{ opacity: 1 }}
 										transition={{ duration: 0.4, delay: 1.0 }}
@@ -178,7 +178,7 @@ export function Evidencia({ phase = 0 }: EvidenciaProps) {
 								}}
 							>
 								<div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-									<span className="text-white font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl tv:text-6xl tv-4k:text-7xl tabular-nums inline-flex items-baseline">
+									<span className="text-white font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tv:text-7xl tv-4k:text-8xl tabular-nums inline-flex items-baseline">
 										<SlidingNumber from={0} to={200} duration={NUM_DURATION} delay={2.0} prefix="+" countStartsAfterVisible className="text-inherit" />
 										<span className="ml-1">HORAS / MES</span>
 									</span>
