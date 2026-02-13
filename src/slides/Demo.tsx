@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { slideBg } from '@src/lib/slideTheme'
 
 const DEMO_VIDEO_URL =
-	'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos/SolHoub/SOLHUB.Feb2026.mp4'
+	'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos/SolHoub/0211%20(2).mp4'
 
 export function Demo() {
 	return (
