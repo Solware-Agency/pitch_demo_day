@@ -21,13 +21,13 @@ export function Reveal() {
 				<img
 					src={LOGO_SOLHUB_SIN_ESLOGAN}
 					alt="SolHub"
-					className="w-auto object-contain h-24 sm:h-28 md:h-36 lg:h-44 xl:h-52"
+					className="w-auto object-contain h-24 sm:h-28 md:h-36 lg:h-44 xl:h-52 tv:h-64 tv-4k:h-80"
 				/>
 			</motion.div>
 
 			{/* Solwy - mismo glow que dashboard Solhub_prod */}
 			<motion.div
-				className="absolute top-8 right-8 sm:right-12 w-24 aspect-[647.42/831.52] z-20 flex items-center justify-center"
+				className="absolute top-8 right-8 sm:right-12 tv:right-16 tv-4k:right-20 w-24 tv:w-40 tv-4k:w-48 aspect-[647.42/831.52] z-20 flex items-center justify-center"
 				initial={{ opacity: 0, y: -80 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}

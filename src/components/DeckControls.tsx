@@ -168,7 +168,7 @@ export function DeckControls({
 			{/* Zona de activación - abajo izquierda, invisible, hover/click para mostrar menú */}
 			<div
 				ref={menuRef}
-				className="fixed bottom-4 left-4 z-[100] group flex flex-col items-start min-h-[220px] min-w-[200px]"
+				className="fixed bottom-4 left-4 z-[100] group flex flex-col items-start min-h-[220px] min-w-[200px] tv:scale-125 tv-4k:scale-150 tv:origin-bottom-left tv-4k:origin-bottom-left"
 			>
 				{/* Área invisible para hover/click - esquina inferior izquierda */}
 				<button
@@ -275,7 +275,7 @@ export function DeckControls({
 
 			{/* Timer visible en pantalla cuando corre */}
 			{(timerRunning || timerSeconds > 0) && (
-				<div className="fixed bottom-4 left-4 z-[90] font-mono text-lg text-white/90 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-lg tabular-nums">
+				<div className="fixed bottom-4 left-4 z-[90] font-mono text-lg tv:text-xl tv-4k:text-2xl text-white/90 bg-black/40 backdrop-blur-sm px-3 py-2 tv:px-4 tv:py-3 rounded-lg tabular-nums tv:scale-125 tv-4k:scale-150 tv:origin-bottom-left tv-4k:origin-bottom-left">
 					{timerTarget !== null ? (
 						<span>
 							{formatTime(timerSeconds)} / {formatTime(timerTarget)}

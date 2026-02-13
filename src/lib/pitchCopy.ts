@@ -65,7 +65,7 @@ export const pitchCopy = {
 
 	// --- EVIDENCIA (1:25–1:55) ---
 	evidencia: {
-		title: 'VALIDADO EN 4 LABORATORIOS',
+		title: 'VALIDADO EN 4 CENTROS DE SALUD',
 		metrics: [
 			{ value: '2:00 → 0:30', sub: '−75%' },
 			{ value: '12–15 → 6–9 MIN', sub: '' },

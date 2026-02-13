@@ -10,9 +10,11 @@ const config: Config = {
 	// darkMode en v4 ya no se usa como antes; se gestiona con @custom-variant.
 
 	theme: {
-		// En v4 el tema se define en CSS con @theme (ver globals.css).
-		// Puedes extender spacing, fonts, etc. aquí si lo prefieres.
 		extend: {
+			screens: {
+				tv: '1920px',
+				'tv-4k': '3840px',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				xl: 'calc(var(--radius) + 2px)',

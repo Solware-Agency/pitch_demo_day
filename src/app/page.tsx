@@ -140,7 +140,7 @@ export default function SlidesPage() {
 			/>
 
 			<div
-				className="w-full min-h-dvh relative cursor-pointer"
+				className="w-full min-h-dvh relative cursor-pointer slide-safe tv:aspect-video tv:max-h-dvh tv:mx-auto tv:max-w-[177.78vh]"
 				onClick={handleSlideClick}
 				onTouchStart={handleTouchStart}
 				onTouchEnd={handleTouchEnd}

@@ -36,7 +36,7 @@ export function Problema() {
 	return (
 		<div className={`${slideBg.base} w-full flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden min-h-dvh`}>
 			<div className="absolute inset-0 bg-[#0a0a0f]/60 z-[1]" aria-hidden />
-			<div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
+			<div className="relative z-10 w-full max-w-5xl tv:max-w-6xl tv-4k:max-w-7xl mx-auto flex flex-col items-center">
 				{/* 3 slots fijos (izq, centro, der). Cards aparecen en su lugar, tamaños no cambian */}
 				<motion.div
 					key="phase1"
@@ -101,19 +101,19 @@ export function Problema() {
 													locale="de-DE"
 													className={`font-black text-white text-center block max-w-full ${
 														isCenter
-															? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl'
-															: 'text-2xl sm:text-3xl md:text-4xl'
+															? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl tv:text-7xl tv-4k:text-8xl'
+															: 'text-2xl sm:text-3xl md:text-4xl tv:text-5xl tv-4k:text-6xl'
 													}`}
 												/>
 											) : (
 												<span className={`font-black text-white/0 text-center block tabular-nums ${
-													isCenter ? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl' : 'text-2xl sm:text-3xl md:text-4xl'
+													isCenter ? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl tv:text-7xl tv-4k:text-8xl' : 'text-2xl sm:text-3xl md:text-4xl tv:text-5xl tv-4k:text-6xl'
 												}`}>0</span>
 											)}
 										</div>
 										<span
 											className={`mt-1 text-center font-semibold text-white/90 ${
-												isCenter ? 'text-base sm:text-lg md:text-xl' : 'text-sm sm:text-base'
+												isCenter ? 'text-base sm:text-lg md:text-xl tv:text-2xl tv-4k:text-3xl' : 'text-sm sm:text-base tv:text-lg tv-4k:text-xl'
 											}`}
 										>
 											{card.label}

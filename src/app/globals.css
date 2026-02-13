@@ -66,6 +66,22 @@
 
   /* Tipografías / radius opcionales (ajusta a tu gusto) */
   --radius: 0.5rem;
+
+  /* Tipografía fluida para TV/pantallas grandes — escala con viewport */
+  --fluid-text-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1.25rem);
+  --fluid-text-base: clamp(1rem, 0.9rem + 0.4vw, 1.5rem);
+  --fluid-text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.75rem);
+  --fluid-text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 2rem);
+  --fluid-text-2xl: clamp(1.5rem, 1.2rem + 1vw, 2.5rem);
+  --fluid-text-3xl: clamp(1.875rem, 1.4rem + 1.5vw, 3rem);
+  --fluid-text-4xl: clamp(2.25rem, 1.6rem + 2vw, 4rem);
+  --fluid-text-5xl: clamp(3rem, 2rem + 2.5vw, 5rem);
+  --fluid-text-6xl: clamp(3.75rem, 2.5rem + 3vw, 6rem);
+  --fluid-text-7xl: clamp(4.5rem, 3rem + 3.5vw, 7rem);
+  --fluid-text-8xl: clamp(6rem, 4rem + 4vw, 8rem);
+
+  /* Safe area para TV (overscan) — escala con viewport */
+  --slide-safe: clamp(1rem, 4vw, 6rem);
 }
 
 /* Activa "dark" por clase .dark en v4 */
@@ -162,6 +178,29 @@
   /* ejemplo: tarjetas */
   .card {
     @apply bg-card text-card-foreground rounded-xl border;
+  }
+
+  /* Tipografía fluida — escala con viewport para TV/pantallas grandes */
+  .text-fluid-sm { font-size: var(--fluid-text-sm); }
+  .text-fluid-base { font-size: var(--fluid-text-base); }
+  .text-fluid-lg { font-size: var(--fluid-text-lg); }
+  .text-fluid-xl { font-size: var(--fluid-text-xl); }
+  .text-fluid-2xl { font-size: var(--fluid-text-2xl); }
+  .text-fluid-3xl { font-size: var(--fluid-text-3xl); }
+  .text-fluid-4xl { font-size: var(--fluid-text-4xl); }
+  .text-fluid-5xl { font-size: var(--fluid-text-5xl); }
+  .text-fluid-6xl { font-size: var(--fluid-text-6xl); }
+  .text-fluid-7xl { font-size: var(--fluid-text-7xl); }
+  .text-fluid-8xl { font-size: var(--fluid-text-8xl); }
+
+  /* Safe area para slides (evita recorte en TV con overscan) — solo en pantallas grandes */
+  .slide-safe {
+    padding: 0;
+  }
+  @media (min-width: 1920px) {
+    .slide-safe {
+      padding: var(--slide-safe);
+    }
   }
 }
 
@@ -364,6 +403,15 @@
     
     .slide-transition-content {
       overflow: visible !important;
+    }
+  }
+
+  /* Pantallas grandes (TV, monitores) — sin scroll, presentación fija */
+  @media (min-width: 1920px) {
+    html, body {
+      overflow: hidden !important;
+      height: 100vh;
+      height: 100dvh;
     }
   }
 }
